@@ -1,0 +1,143 @@
+ Chrome ctrl+f ye basıldığında inspect bölümünde
+ first_name yazarsak bütün kelimelerde arar
+ #first_name yazarsak bütün ID paramtrelerinde arar
+ .first_name yazarsak bütün CLASS paramatrelerinde arar
+ birden fazla aynı locator a sahip eleman bulursa findElement ne yapar ?
+ cevap : ilk element i bulur
+
+ aranılan eleman bulunamazsa : findElement NoSuchElement hatası veriri
+   fidnElements ise size ı 0 olan List verir, yani hata vermez.
+
+------------------------------------------------------------------------------------------------------------------------
+
+                                                XPATH VE CSSDE KARDES(LER) BULMA
+
+        CSS  SELECTOR                     XPATH
+
+        .form div input                   //form//div//input
+        .form>div>input                   //form/div/input
+        .form+div                         //form//following-sibling::div
+
+------------------------------------------------------------------------------------------------------------------------
+
+                                              XPATH VE CSSDE COCUK(LER) BULMA
+
+        CSS  SELECTOR                                                                             XPATH
+
+      ORNEK:                                                             Xpath=//*[@id='java_technologies']//child::li
+                                                                         Xpath=//div[@class='cart_list']//a
+[class='border col-md-12 col-sm-12']>p:nth-child(2)
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+//child::div   ---> parenten cocuklarindan div olanlari bulur
+
+ORNEK:
+
+https://www.selenium.dev/
+
+//div[@class='container-fluid td-default td-outer']//child::h1
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+isDisplay   -->   html kodu olarak var ama tarayicida gorunur degil
+
+------------------------------------------------------------------------------------------------------------------------
+
+                                                SELENIUM BEKLETME KONUSU
+
+Thread.Sleep : bu selenium a özel değil, java ya ait yazılımın herhangi bir yerinde verilen süre kadar bekler.
+
+Implicitly Wait :
+Tüm sayfadaki elemanlar için bir bekleme süresi atanıyor.Ancak eleman bulunduğu anda daha fazla beklemiyor.
+Bütüm elemanlar için geçerli.NoSuchElement hatası nı vermek için verilen süre kadar,  eleman bulunana kadar bekler.
+
+  driver.manage().timeouts().implicitlyWait(dr);
+
+
+pageLoadTimeout :
+  driver.manage().timeouts().pageLoadTimeout(dr);
+  30 sn süresinde sayfanın yüklenmesini bekliyor, bu süreden sonra timeout düşerek hata verir.
+
+------------------------------------------------------------------------------------------------------------------------
+
+Bekletme ilgili 3 durum var
+
+1-) Sayfanin yuklenmesi  ====> pageload
+
+2-) Aranilan elemanin html icinde kod olarak yeraknasi (findElement, findElements) ====> implicity wait
+
+3-) Islem yapilacak element islem icin hazirmi, gorunur halde mi, tiklanabilir halde mi,
+ sayfa icinde yer aliyor mu, select hazir mi. ====> explicitwait
+
+------------------------------------------------------------------------------------------------------------------------
+
+                                            SELECT MENU VE RADIO BUTTON
+radio buttonlarda ozel bir sey yapmana gerek yok cunku zaten bir tane var direkt click diyebilirsin
+
+ama select menulerde birden fazla secenek var ve o select menu icin bir Select olusturman gerekiyor
+
+WebElement menu = driver.findElement(By.id("animals"));
+Select ddMenu = new Select(menu);
+        ddMenu.selectByVisibleText("Avatar");
+
+NOT!!! RADIO BUTTONDA SADECE BIR TANE SECENEK ISARETLEYEBILIRSIN    ORNEK KAC KARDESIN VAR  1   2   3
+       CHECK BOXDA BIRDEN FAZLA SECENEK SECEBILIRSIN                ORNEK HANGI KURSLARI ALDIN
+       TOGGLE AC-KAPAT
+
+------------------------------------------------------------------------------------------------------------------------
+
+                                            SCROLL TO VE SCROLL BY
+
+Scroll to  ------->   verilen pixele gider yani - olamaz
+
+Scroll By  ------->   yukari gitmek icin - kullanabilir yani kac birim yukari/ asagi gitmek istedigini soylersin
+
+------------------------------------------------------------------------------------------------------------------------
+
+                                            ASSERTLER (TESTNG DEN KOPYALANDI)
+
+@Test
+    void EqualOrnek()
+    {
+        String s1="Merhaba";
+        String s2="Merhaba1";
+                        //Actual(oluşan), Expected(beklenen) , Mesaj(opsiyonel)
+        Assert.assertEquals(s1,s2,"Karşılaştırma sonucu"); //hard assertion, soft assertion
+        //Actual - Expected - Message ( A E M) sırasını alfabetik sıraya göre hatırlayabiliriz
+    }
+
+    @Test
+    void NotEqualOrnek() {
+        String s1="Merhaba";
+        String s2="Merhaba";
+
+        Assert.assertNotEquals(s1,s2, "Karşılaştırma sonucu");
+    }
+
+    @Test
+    void TrueOrnek() {
+        int s1=55;
+        int s2=66;
+
+        Assert.assertTrue(s1==s2, "Karşılaştırma sonucu");
+    }
+
+    @Test
+    void nullOrnek() {
+        String s1="ismet";  // null
+
+        Assert.assertNull(s1, "işlem sonucu");
+    }
+
+    @Test
+    void direktFail() {
+        int a=55;
+
+        if (a==55)
+           Assert.fail();
+    }

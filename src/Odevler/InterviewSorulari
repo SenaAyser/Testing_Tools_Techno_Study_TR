@@ -1,0 +1,31 @@
+•Selenium da kaç çeşit Locator vardır ? Hangi sırada tercih edersiniz ?
+^^id, name, className, tagName, linkText, partialLinkText, CSS selector and xpath
+
+•driver.quit le driver.close arasındaki fark nedir ?
+^^ quit browser i kapatirkene close tab i kapattir
+
+•driver.navigate.to ile driver.get arasındaki fark nedir?
+^^ get(), belirli bir URL'de (web sitesinde) gezinmek ve sayfa yüklenene kadar beklemek için kullanılır.
+   sürücü navigasyon(), belirli bir URL'ye gitmek için kullanılır ve sayfanın yüklenmesini beklemez.
+   Geri veya ileri gitmek için tarayıcı geçmişini veya çerezleri korur.
+
+
+•Elemanın textini unu hangi metodla alırsın ?
+^^ .getText()
+
+•Elemanın attribute unu hangi metodla alırsın ?
+^^ element.getAttribute("style")
+
+•findElement ve findElements farkı nedir ? Bulamazsa ne döndürür ?
+^^ findElement : Bir sey bulamasa run time error verir
+   findElements: Bir sey bulamasa 0 verir consola
+
+•Radio buttonun textini nasıl alırsın ?
+^^ * driver.get("https://designsystem.digital.gov/components/radio-buttons/");
+
+   * WebElement odev = driver.findElement(By.xpath("https://designsystem.digital.gov/components/radio-buttons/"));
+
+   * System.out.println(odev.getText());
+
+•Kırık yani kullanılmayan linkleri nasıl bulursun ?
+   *if(eleman.getText().equals("")) dersek bize kirik likleri verir

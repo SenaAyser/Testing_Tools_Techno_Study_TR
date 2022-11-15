@@ -11,7 +11,7 @@ import java.util.List;
 public class _04_FindingByClassName {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();   // web sayfasını kontrol eden görevli
+        WebDriver driver = new ChromeDriver();   // web sayfasını kontrol eden görevli   // web sayfasını kontrol eden görevli
         driver.get("https://form.jotform.com/221934510376353"); // web sayfasını aç
 
         WebElement submitButton=driver.findElement(By.className("form-submit-button"));
