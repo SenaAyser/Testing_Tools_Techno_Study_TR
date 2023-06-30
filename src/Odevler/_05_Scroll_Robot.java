@@ -9,7 +9,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
@@ -17,11 +16,11 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.time.Duration;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-public class _04_SeleniumTestOdevi extends BaseDriver {
+public class _05_Scroll_Robot extends BaseDriver {
 
     @Test
     public void Test1() {
@@ -136,6 +135,42 @@ public class _04_SeleniumTestOdevi extends BaseDriver {
         4 - Son videonun title ını yazdırınız.*/
 
        driver.get("https://www.youtube.com/");
+       WebElement search = driver.findElement(By.cssSelector("[id='search'][name='search_query']"));
+       search.sendKeys("Selenium");
+
+       WebElement searchButton = driver.findElement(By.cssSelector("[id='search-icon-legacy']>yt-icon"));
+       searchButton.click();
+
+        wait.until(ExpectedConditions.urlContains("Selenium"));
+
+        MyFunc.Bekle(2);
+        List<WebElement> elements =  driver.findElements(By.cssSelector("h3[class*='style-scope']>[id='video-title']"));
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+
+       do {
+           elements=driver.findElements(By.cssSelector("h3[class*='style-scope']>[id='video-title']"));
+           js.executeScript("window.scrollBy(0,1000)");
+       }while (elements.size()<80);
+
+        for (WebElement e:elements) {
+            System.out.println(e.getText());
+        }
+    }
+
+    @Test
+    public void Testdlete() {
+        driver.get("https://www.youtube.com/");
+        WebElement search = driver.findElement(By.xpath("//input[@id='search']"));
+        search.sendKeys("selenium");
+
+        WebElement searchBtn = driver.findElement(By.cssSelector("[id='search-icon-legacy']"));
+        searchBtn.click();
+
+        wait.until(ExpectedConditions.urlContains("selenium"));
+        List<WebElement> videoListeleri = driver.findElements(By.cssSelector("h3[class*='style-scope']>[id='video-title']"));
+        for (WebElement e : videoListeleri) {
+            System.out.println(e.getText());
+        }
     }
 
     @Test

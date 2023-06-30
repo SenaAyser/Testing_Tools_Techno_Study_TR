@@ -13,6 +13,8 @@ public class _01_OpeningWebsite {
 
         opt.setBinary("C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe");
 
+        opt.addArguments("--start-maximized"); //ChatCPT den gorduk denemek lazim calisiyor mu diye 29/03/2023
+
         WebDriver driver = new ChromeDriver(opt);
 
         driver.get("https://www.google.com/search?q=WARNING:+Unable+to+find+an+exact+match+for+CDP+version+107,+so+returning+the+closest+version+found:+106&sxsrf=ALiCzsaYjpAc7qJ-wXkLlYbemEG9zPxqmw:1667076787950&source=lnms&tbm=vid&sa=X&ved=2ahUKEwjs2oj-qIb7AhWhXfEDHdiaCC8Q_AUoA3oECAEQBQ&biw=1536&bih=796&dpr=1.25");

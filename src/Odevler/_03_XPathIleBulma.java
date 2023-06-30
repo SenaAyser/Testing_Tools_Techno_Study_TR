@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class _02_XPathIleBulma extends BaseDriver {
+public class _03_XPathIleBulma extends BaseDriver {
 
    /* Aşağıdaki testlerde aranan elamanın kendi id veya name ini kullanmadan SADECE XPATH yardımı ile gerekiyorsa Child ve kardeş yolu ile bularak testleri yapınız.*/
 

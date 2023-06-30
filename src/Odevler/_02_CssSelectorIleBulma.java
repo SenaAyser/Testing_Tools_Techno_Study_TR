@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class _01_CssSelectorIleBulma extends BaseDriver {
+public class _02_CssSelectorIleBulma extends BaseDriver {
     /*Aşağıdaki testlerde aranan elamanın kendi id veya name ini kullanmadan SADECE CssSelector yardımı ile gerekiyorsa Child ve kardeş yolu ile bularak testleri yapınız.*/
 
     @Test
@@ -91,7 +91,7 @@ public class _01_CssSelectorIleBulma extends BaseDriver {
         3) Bu yazının göründüğünü doğrulayınız. -> (We've got 297 results for 'teddy bear')
         Not: Bu yazıdaki sayı değişiklik gösterebilir. Önemli olan cümle kalıbı.*/
 
-
+        driver.get("");
     }
 
     @Test
